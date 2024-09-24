@@ -9,15 +9,17 @@ import 'package:get/get.dart';
 import 'package:oopquiz/theme.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  final initFuture = MobileAds.instance.initialize();
+  // WidgetsFlutterBinding.ensureInitialized();
+  // final initFuture = MobileAds.instance.initialize();
 
-  final adState = AdState(initFuture);
+  // final adState = AdState(initFuture);
 
-  runApp(Provider.value(
-    value: adState,
-    builder: (context, child) => const MyApp(),
-  ));
+  // runApp(Provider.value(
+  //   value: adState,
+  //   builder: (context, child) => const MyApp(),
+  // ));
+
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {

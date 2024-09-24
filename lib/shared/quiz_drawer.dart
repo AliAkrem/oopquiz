@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oopquiz/utils/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:oopquiz/Models/quiz_model.dart';
 import 'package:oopquiz/quiz/quiz_state.dart';
@@ -16,12 +17,14 @@ class QuizDrawer extends StatelessWidget {
         int index = entry.key;
         var quiz = entry.value;
         return ListTile(
+          textColor:
+              quizState.currentPageIndex == index + 1 ? Colors.blueAccent : null,
           title: Text(
             '${index + 1}. ${quiz.quizTag}', // Adding index to the quiz tag
           ),
           onTap: () {
-            quizState.goToPage(index + 1);
-            Scaffold.of(context).closeDrawer();
+            quizState.goToPage(index+1);
+            // Scaffold.of(context).closeDrawer();
           },
         );
       },

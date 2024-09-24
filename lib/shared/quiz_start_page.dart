@@ -29,18 +29,19 @@ class StartPage extends StatelessWidget {
               ElevatedButton.icon(
                 onPressed: () {
                   state.startTimer();
+                  
                   state.nextPage();
                 },
-                label: const Text('Continue'),
-                icon: const Icon(Icons.fast_forward),
+                label: const Text('Start'),
+                icon: const Icon(Icons.play_arrow),
               ),
               const SizedBox(
                 width: 12,
               ),
               ElevatedButton.icon(
                 onPressed: state.nextPage,
-                label: const Text('Restart'),
-                icon: const Icon(Icons.replay),
+                label: const Text('Dev Start'),
+                icon: const Icon(Icons.developer_mode),
               )
             ],
           )

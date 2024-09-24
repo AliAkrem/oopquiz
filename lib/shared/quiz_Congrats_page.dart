@@ -35,7 +35,7 @@ class CongratsPage extends StatelessWidget {
 
               Navigator.pushNamedAndRemoveUntil(
                 context,
-                '/home',
+                '/',
                 (route) => false,
               );
             },

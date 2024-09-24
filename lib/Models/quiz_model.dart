@@ -23,7 +23,9 @@ class Quiz {
       required this.answers,
       required this.correctAnswer,
       // required this.topicId,
-      required this.details}) {
+      required this.details,
+      this.solved = false 
+      }) {
     SharedPreferences.getInstance().then(
       (prefs) {
         if (!prefs.containsKey(quizId)) {

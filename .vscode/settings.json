@@ -11,5 +11,6 @@
         "**/.idea": true,
         ".idea": true
     },
-    "explorerExclude.backup": {}
+    "explorerExclude.backup": {},
+    "deno.enable": false
 }

@@ -104,11 +104,7 @@ class _PreWrapperState extends State<CodeWrapperWidget> {
       )
     ]);
 
-    return Stack(
-      children: [
-        widget.child,
-      ],
-    );
+    
   }
 
   void refresh() {

@@ -16,22 +16,22 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   BannerAd? banner;
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    final adState = Provider.of<AdState>(context);
+  // @override
+  // void didChangeDependencies() {
+  //   super.didChangeDependencies();
+  //   final adState = Provider.of<AdState>(context);
 
-    adState.initialization.then((status) {
-      setState(() {
-        banner = BannerAd(
-          size: AdSize.banner,
-          adUnitId: adState.bannerAdUnitId,
-          request: const AdRequest(),
-          listener: adState.adListener,
-        )..load();
-      });
-    });
-  }
+  //   adState.initialization.then((status) {
+  //     setState(() {
+  //       banner = BannerAd(
+  //         size: AdSize.banner,
+  //         adUnitId: adState.bannerAdUnitId,
+  //         request: const AdRequest(),
+  //         listener: adState.adListener,
+  //       )..load();
+  //     });
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -47,12 +47,12 @@ class _HomePageState extends State<HomePage> {
               show: state is WiningState,
               child: Column(
                 children: [
-                  (banner != null)
-                      ? SizedBox(
-                          height: 50,
-                          child: AdWidget(ad: banner!),
-                        )
-                      : Container(),
+                  // (banner != null)
+                  //     ? SizedBox(
+                  //         height: 50,
+                  //         child: AdWidget(ad: banner!),
+                  //       )
+                  //     : Container(),
                   const Expanded(child: TopicList())
                 ],
               ),

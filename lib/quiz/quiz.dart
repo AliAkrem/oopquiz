@@ -1,6 +1,7 @@
 import 'package:oopquiz/Models/topic_model.dart';
 import 'package:oopquiz/quiz/quiz_state.dart';
 import 'package:flutter/material.dart';
+import 'package:preload_page_view/preload_page_view.dart';
 import 'package:provider/provider.dart';
 import 'package:oopquiz/shared/shared.dart';
 
@@ -22,9 +23,9 @@ class _QuizScreenState extends State<QuizScreen> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => QuizProvider(),
+      create: (_) => QuizProvider(
+          privetTimerControllersLength: widget.topic.quizzes.length),
       builder: (context, child) {
-
         var quizState = Provider.of<QuizProvider>(context);
         var quizzes = widget.topic.quizzes;
 
@@ -36,17 +37,21 @@ class _QuizScreenState extends State<QuizScreen> {
                 const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8.0),
                     child: CountDownTimer(
-                      duration: 120,
+                      duration: 900,
                     ))
               ],
             ),
           ),
-          body: PageView.builder(
+          body: PreloadPageView.builder(
             physics: const NeverScrollableScrollPhysics(),
             scrollDirection: Axis.horizontal,
             controller: quizState.controller,
-            onPageChanged: (int idx) =>
-                quizState.progress = (idx / (quizzes.length + 1)),
+            preloadPagesCount: 1,
+
+            onPageChanged: (int idx) {
+              quizState.currentPageIndex = idx;
+              quizState.progress = (idx / (quizzes.length + 1));
+            },
             itemBuilder: (BuildContext context, int idx) {
               if (idx == 0) {
                 return StartPage(topic: widget.topic);
@@ -54,6 +59,7 @@ class _QuizScreenState extends State<QuizScreen> {
                 return CongratsPage(topic: widget.topic);
               } else {
                 return QuestionPage(
+                  questionIndex: idx - 1,
                   quiz: quizzes[idx - 1],
                   topic: widget.topic,
                 );
@@ -65,7 +71,6 @@ class _QuizScreenState extends State<QuizScreen> {
             quizzes: widget.topic.quizzes,
           )),
         );
-  
       },
       // ),
     );
