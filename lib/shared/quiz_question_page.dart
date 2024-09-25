@@ -109,7 +109,7 @@ class _QuestionPageState extends State<QuestionPage>
                                     QuestionCountDownTimer(
                                       idx: widget.questionIndex,
                                       showAnswers: showAnswers,
-                                      duration: 5,
+                                      duration: 30,
                                     ),
                                   ],
                                 ),

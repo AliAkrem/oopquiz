@@ -1,18 +1,42 @@
+import 'dart:convert';
+import 'package:oopquiz/Models/quiz_model.dart';
 import 'package:oopquiz/shared/progress_bar.dart';
 import 'package:oopquiz/Models/topic_model.dart';
 import 'package:flutter/material.dart';
 import 'package:oopquiz/shared/topic_screen.dart';
 import 'package:oopquiz/utils/constants.dart';
 
-class TopicItem extends StatelessWidget {
+class TopicItem extends StatefulWidget {
   final Topic topic;
 
   const TopicItem({super.key, required this.topic});
 
   @override
+  State<TopicItem> createState() => _TopicItemState();
+}
+
+class _TopicItemState extends State<TopicItem> {
+  @override
+  void initState() {
+    super.initState();
+    _loadQuizzes();
+  }
+
+  Future<void> _loadQuizzes() async {
+    final updatedQuizzes =
+        await QuizStoreManager.getQuizzesWithStatus(widget.topic.quizzes);
+
+    setState(() {
+      widget.topic.quizzes = updatedQuizzes;
+    });
+
+    await TopicStoreManager.revalidateProgress(widget.topic);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Hero(
-      tag: topic.imagePath,
+      tag: widget.topic.imagePath,
       child: Card(
         clipBehavior: Clip.antiAlias,
         child: InkWell(
@@ -20,7 +44,8 @@ class TopicItem extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (BuildContext context) => TopicScreen(topic: topic),
+                builder: (BuildContext context) =>
+                    TopicScreen(topic: widget.topic),
               ),
             );
           },
@@ -35,7 +60,7 @@ class TopicItem extends StatelessWidget {
                     height: 140,
                     child: Center(
                       child: Image.asset(
-                        "assets/topics/${topic.imagePath}",
+                        "assets/topics/${widget.topic.imagePath}",
                         height: 50,
                         width: 100,
                       ),
@@ -55,7 +80,7 @@ class TopicItem extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            topic.name,
+                            widget.topic.name,
                             style: const TextStyle(
                               height: 1.5,
                               fontWeight: FontWeight.bold,
@@ -75,8 +100,8 @@ class TopicItem extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Expanded(
-                              child:
-                                  AnimatedProgressbar(value: topic.progress)),
+                              child: AnimatedProgressbar(
+                                  value: widget.topic.progress)),
                         ],
                       ),
                     )

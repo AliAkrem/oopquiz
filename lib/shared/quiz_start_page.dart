@@ -29,7 +29,6 @@ class StartPage extends StatelessWidget {
               ElevatedButton.icon(
                 onPressed: () {
                   state.startTimer();
-                  
                   state.nextPage();
                 },
                 label: const Text('Start'),
@@ -38,11 +37,6 @@ class StartPage extends StatelessWidget {
               const SizedBox(
                 width: 12,
               ),
-              ElevatedButton.icon(
-                onPressed: state.nextPage,
-                label: const Text('Dev Start'),
-                icon: const Icon(Icons.developer_mode),
-              )
             ],
           )
         ],

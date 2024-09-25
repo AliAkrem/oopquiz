@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:oopquiz/utils/constants.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DrawerNavBar extends StatefulWidget {
   const DrawerNavBar({super.key});
@@ -9,7 +10,7 @@ class DrawerNavBar extends StatefulWidget {
 }
 
 class _DrawerNavBarState extends State<DrawerNavBar> {
-  String userName = 'USER123';
+  String userName = '';
   String imageUrl = "assets/user/man.png";
 
   @override
@@ -32,22 +33,13 @@ class _DrawerNavBarState extends State<DrawerNavBar> {
     final drawerItems = ListView(
       children: [
         drawerHeader,
-        //TODO add here about page and credit 
-        ListTile(
-            title: const Text(
-              'score',
-            ),
-            leading: const Icon(
-              Icons.bar_chart,
-              color: Colors.blue,
-            ),
-            onTap: () {}),
+        //TODO add here about page and credit
         ListTile(
           title: const Text(
-            'sign out',
+            'Clear Records',
           ),
           leading: const Icon(
-            Icons.power_settings_new,
+            Icons.delete,
             color: Colors.red,
           ),
           onTap: () {
@@ -55,7 +47,8 @@ class _DrawerNavBarState extends State<DrawerNavBar> {
                 context: context,
                 builder: (BuildContext context) {
                   return AlertDialog(
-                    title: const Text('Are you sure you want to leave'),
+                    title: const Text(
+                        'Are you sure you want to clear your records ?'),
                     content: const Text('What do you want to do?'),
                     actions: [
                       TextButton(
@@ -66,11 +59,16 @@ class _DrawerNavBarState extends State<DrawerNavBar> {
                       ),
                       TextButton(
                         child: const Text(
-                          'sign out',
+                          'Clear',
                           style: TextStyle(color: Colors.red),
                         ),
-                        onPressed: () {
-                          Navigator.pushReplacementNamed(context, '/');
+                        onPressed: () async {
+                          final prefs = await SharedPreferences.getInstance();
+                          prefs.clear().then((res) {
+                            if (res) {
+                              Navigator.pushReplacementNamed(context, '/');
+                            }
+                          });
                         },
                       ),
                     ],

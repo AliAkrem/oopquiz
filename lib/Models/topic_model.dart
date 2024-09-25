@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:oopquiz/Models/quiz_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Topic topicFromJson(String str) => Topic.fromJson(json.decode(str));
 
@@ -11,15 +12,35 @@ class Topic {
   final String name;
   final String description;
   final String imagePath;
-  final double progress;
-  final List<Quiz> quizzes;
+  double _progress = 0;
+
+  double get progress => _progress;
+
+  set progress(double value) {
+    _progress = value;
+  }
+
+  late List<Quiz> _quizzes;
+
+  List<Quiz> get quizzes => _quizzes;
+
+  set quizzes(List<Quiz> value) {
+    _quizzes = value;
+  }
+
   Topic(
       {required this.topicId,
       required this.name,
       required this.description,
       required this.imagePath,
-      required this.quizzes,
-      this.progress = 0.0});
+      required List<Quiz> quizzes}) {
+    _quizzes = quizzes;
+    initProgress();
+  }
+
+  void initProgress() async {
+    _progress = await TopicStoreManager.getTopicProgress(topicId);
+  }
 
   Topic copyWith(
           {int? topicId,
@@ -33,7 +54,6 @@ class Topic {
         name: name ?? this.name,
         description: description ?? this.description,
         imagePath: imagePath ?? this.imagePath,
-        progress: progress ?? this.progress,
         quizzes: quizzes ?? this.quizzes,
       );
 
@@ -42,7 +62,6 @@ class Topic {
       name: json["name"],
       description: json["description"],
       imagePath: json["image_path"],
-      progress: json["progress"] ?? 0.0,
       quizzes: json["quizzes"] ?? []);
 
   Map<String, dynamic> toJson() => {
@@ -53,4 +72,25 @@ class Topic {
         "progress": progress,
         "quizzes": quizzes
       };
+}
+
+class TopicStoreManager {
+  static const String _prefix = 'topic_progress_';
+
+  static Future<void> revalidateProgress(Topic topic) async {
+    final prefs = await SharedPreferences.getInstance();
+    final double progress = await QuizStoreManager.calculateProgress(topic.quizzes);
+    topic.progress = progress ;
+    await prefs.setDouble('$_prefix${topic.topicId}', progress);
+  }
+
+  static Future<double> getTopicProgress(int topicId) async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getDouble('$_prefix$topicId') ?? 0.0;
+  }
+
+  static void setTopicProgress(int topicId, double progress) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setDouble('$_prefix$topicId', progress);
+  }
 }

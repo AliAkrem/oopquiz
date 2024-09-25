@@ -25,6 +25,7 @@ class _QuizScreenState extends State<QuizScreen> {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) => QuizProvider(
+          topic: widget.topic,
           privetTimerControllersLength: widget.topic.quizzes.length),
       builder: (context, child) {
         var quizState = Provider.of<QuizProvider>(context);
@@ -44,7 +45,7 @@ class _QuizScreenState extends State<QuizScreen> {
                   const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 8.0),
                       child: CountDownTimer(
-                        duration: 900,
+                        duration: 420,
                       ))
                 ],
               ),

@@ -8,11 +8,10 @@ String quizToJson(Quiz data) => json.encode(data.toJson());
 
 class Quiz {
   final String quizTag;
-  final String quizId;
+  final int quizId;
   final String questionContent;
   final List<String> answers;
   final int correctAnswer;
-  // final int topicId;
   final String details;
   late bool solved;
 
@@ -22,30 +21,12 @@ class Quiz {
       required this.questionContent,
       required this.answers,
       required this.correctAnswer,
-      // required this.topicId,
       required this.details,
-      this.solved = false 
-      }) {
-    SharedPreferences.getInstance().then(
-      (prefs) {
-        if (!prefs.containsKey(quizId)) {
-          prefs.setBool(quizId, solved);
-          solved = false;
-        } else {
-          solved = prefs.getBool(quizId) ?? false;
-        }
-      },
-    );
-  }
-
-  Future<void> saveQuizSolvedStatusTrue() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool(quizId, true);
-  }
+      this.solved = false});
 
   Quiz copyWith(
           {String? quizTag,
-          String? quizId,
+          int? quizId,
           String? questionContent,
           List<String>? answers,
           int? correctAnswer,
@@ -82,4 +63,41 @@ class Quiz {
         "details": details,
         "solved": solved,
       };
+}
+
+class QuizStoreManager {
+  static const String _prefix = 'quiz_solved_';
+
+  static Future<void> saveQuizStatus(int quizId, bool isSolved) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('$_prefix$quizId', isSolved);
+
+
+  }
+
+  static Future<bool> getQuizStatus(String quizId) async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getBool('$_prefix$quizId') ?? false;
+  }
+
+  static Future<List<Quiz>> getQuizzesWithStatus(List<Quiz> quizzes) async {
+    for (var quiz in quizzes) {
+      quiz.solved = await getQuizStatus("${quiz.quizId}");
+    }
+    return quizzes;
+  }
+
+  static Future<double> calculateProgress(List<Quiz> quizzes) async {
+    double p = 0;
+    for (var quiz in quizzes) {
+      if (quiz.solved == true) {
+        p++;
+      }
+    }
+    if (quizzes.isNotEmpty) {
+      return p / quizzes.length;
+    } else {
+      return 0;
+    }
+  }
 }

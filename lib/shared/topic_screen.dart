@@ -3,21 +3,26 @@ import 'package:oopquiz/quiz/quiz.dart';
 import 'package:flutter/material.dart';
 import 'package:oopquiz/utils/constants.dart';
 
-class TopicScreen extends StatelessWidget {
+class TopicScreen extends StatefulWidget {
   final Topic topic;
 
   const TopicScreen({super.key, required this.topic});
 
   @override
+  State<TopicScreen> createState() => _TopicScreenState();
+}
+
+class _TopicScreenState extends State<TopicScreen> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: Text(topic.name),
+        title: Text(widget.topic.name),
       ),
       body: ListView(children: [
         Hero(
-          tag: topic.imagePath,
+          tag: widget.topic.imagePath,
           child: Container(
             margin: const EdgeInsets.symmetric(vertical: 20),
             color: charcoalColor,
@@ -26,7 +31,7 @@ class TopicScreen extends StatelessWidget {
               height: (MediaQuery.of(context).size.height / 12) * 4,
               child: Center(
                 child: Image.asset(
-                  "assets/topics/${topic.imagePath}",
+                  "assets/topics/${widget.topic.imagePath}",
                   height: 50 * 2,
                   width: 100 * 2,
                   fit: BoxFit.contain,
@@ -43,7 +48,7 @@ class TopicScreen extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (_) => QuizScreen(
-                            topic: topic,
+                            topic: widget.topic,
                           )));
             },
             child: const Text("start now"),

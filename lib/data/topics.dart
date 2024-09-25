@@ -2,7 +2,7 @@ import 'package:oopquiz/Models/quiz_model.dart';
 import 'package:oopquiz/Models/topic_model.dart';
 import 'package:oopquiz/data/modularity_seed.dart';
 
-final List<Topic> topics = [
+List<Topic> topics = [
   {
     "topic_id": 1,
     "name": 'Modularity(Object and Class)',
@@ -10,13 +10,7 @@ final List<Topic> topics = [
         'Modularity is the practice of dividing a program into separate, independent modules that can be developed and tested individually.',
     "image_path": 'cube.png',
     "quizzes": modularity.map((e) => Quiz.fromJson(e)).toList(),
-    //! fix me
-    // "progress": (modularity
-    //         .map((e) => Quiz.fromJson(e))
-    //         .toList()
-    //         .where((element) => element.solved == true)
-    //         .length /
-    //     modularity.map((e) => Quiz.fromJson(e)).toList().length).toDouble()
+    
   },
   {
     "topic_id": 2,

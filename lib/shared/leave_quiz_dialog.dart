@@ -18,7 +18,11 @@ showLeaveAlertDialog(BuildContext context) {
               ),
               onPressed: () {
                 // Redirect to the home page
-                Navigator.pushReplacementNamed(context, '/');
+                 Navigator.pushNamedAndRemoveUntil(
+                context,
+                '/',
+                (route) => false,
+              );
               },
             ),
             TextButton(

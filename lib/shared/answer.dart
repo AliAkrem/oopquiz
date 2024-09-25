@@ -22,7 +22,8 @@ class _AnswerState extends State<Answer> {
   Widget build(BuildContext context) {
     var state = Provider.of<QuizProvider>(context);
 
-    var alreadyAnswered = state.quizAnswered[widget.questionIndex] && widget.option == widget.quiz.answers[widget.quiz.correctAnswer] ;
+    var alreadyAnswered = state.quizAnswered[widget.questionIndex] &&
+        widget.option == widget.quiz.answers[widget.quiz.correctAnswer];
 
     return Container(
       margin: const EdgeInsets.only(bottom: 10, left: 16, right: 16),
@@ -37,13 +38,13 @@ class _AnswerState extends State<Answer> {
           child: Row(
             children: <Widget>[
               Icon(
-                 alreadyAnswered
+                alreadyAnswered
                     ? Icons.check_circle_outline
                     : state.selected != widget.option
                         ? Icons.circle_outlined
                         : Icons.cancel_outlined,
                 size: 30,
-                color:  alreadyAnswered
+                color: alreadyAnswered
                     ? Colors.green
                     : state.selected != widget.option
                         ? Colors.white
@@ -66,14 +67,13 @@ class _AnswerState extends State<Answer> {
   }
 
   _bottomSheet(
-      BuildContext context, dynamic opt, QuizProvider state, String quizId) {
+      BuildContext context, dynamic opt, QuizProvider state, int quizId) {
     bool correct = opt == widget.quiz.answers[widget.quiz.correctAnswer];
 
     if (correct) {
-
       state.selected = '';
-      state.setAnswerTrue(widget.questionIndex);
-    } 
+      state.setAnswerTrue(widget.questionIndex, quizId);
+    }
 
     showModalBottomSheet(
       context: context,

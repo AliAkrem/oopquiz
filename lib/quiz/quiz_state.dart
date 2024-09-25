@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:oopquiz/Models/topic_model.dart';
 import 'package:preload_page_view/preload_page_view.dart';
 import 'package:timer_count_down/timer_controller.dart';
+import 'package:oopquiz/Models/quiz_model.dart';
 
 class QuizProvider with ChangeNotifier {
   double _progress = 0;
   String? _selected;
   int currentPageIndex = 0;
+  final Topic topic;
 
   //? public TimerController
   final CountdownController _publicTimeController = CountdownController();
@@ -19,7 +22,8 @@ class QuizProvider with ChangeNotifier {
 
   final PreloadPageController controller = PreloadPageController();
 
-  QuizProvider({required this.privetTimerControllersLength}) {
+  QuizProvider(
+      {required this.privetTimerControllersLength, required this.topic}) {
     //? initialize list of observer
     _privetTimerControllers =
         List.generate(privetTimerControllersLength, (index) {
@@ -28,6 +32,9 @@ class QuizProvider with ChangeNotifier {
 
     quizAnswered = List.generate(privetTimerControllersLength, (index) => false,
         growable: false);
+
+
+    
   }
 
   double get progress => _progress;
@@ -101,7 +108,16 @@ class QuizProvider with ChangeNotifier {
         quizAnswered[index - 1];
   }
 
-  void setAnswerTrue(int idx) {
+  void setAnswerTrue(int idx, int quizId) {
     quizAnswered[idx] = true;
+    QuizStoreManager.saveQuizStatus(quizId, true);
+  }
+
+  void saveProgress() {}
+
+  @override
+  void dispose() {
+    TopicStoreManager.revalidateProgress(topic);
+    super.dispose();
   }
 }
