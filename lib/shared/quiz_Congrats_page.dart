@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
-
 class CongratsPage extends StatelessWidget {
   final Topic topic;
   const CongratsPage({super.key, required this.topic});
@@ -33,10 +32,9 @@ class CongratsPage extends StatelessWidget {
             onPressed: () {
               context.read<WinAnimationBloc>().add(WinEvent());
 
-              Navigator.pushNamedAndRemoveUntil(
+              Navigator.pushReplacementNamed(
                 context,
                 '/',
-                (route) => false,
               );
             },
           )

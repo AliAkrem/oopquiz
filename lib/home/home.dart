@@ -1,8 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:provider/provider.dart';
 import 'package:oopquiz/Blocs/win_animation_bloc/win_animation_bloc.dart';
-import 'package:oopquiz/services/ad_state.dart';
 import 'package:oopquiz/shared/shared.dart';
 import 'package:flutter/material.dart';
 
@@ -45,7 +43,7 @@ class _HomePageState extends State<HomePage> {
           builder: (context, state) {
             return WinAnimationProvider(
               show: state is WiningState,
-              child: Column(
+              child: const Column(
                 children: [
                   // (banner != null)
                   //     ? SizedBox(
@@ -53,7 +51,7 @@ class _HomePageState extends State<HomePage> {
                   //         child: AdWidget(ad: banner!),
                   //       )
                   //     : Container(),
-                  const Expanded(child: TopicList())
+                  Expanded(child: TopicList())
                 ],
               ),
             );

@@ -77,14 +77,6 @@ class TopicItem extends StatelessWidget {
                           Expanded(
                               child:
                                   AnimatedProgressbar(value: topic.progress)),
-                          Text(
-                            "${(topic.progress * 100).round()}%",
-                            style: TextStyle(
-                                color: Colors.deepOrange
-                                    .withGreen((topic.progress * 255).toInt())
-                                    .withRed(
-                                        255 - (topic.progress * 255).toInt())),
-                          )
                         ],
                       ),
                     )

@@ -55,9 +55,10 @@ class _QuizScreenState extends State<QuizScreen> {
             itemBuilder: (BuildContext context, int idx) {
               if (idx == 0) {
                 return StartPage(topic: widget.topic);
-              } else if (idx == quizzes.length + 1) {
+              } else if (idx > quizzes.length ) {
                 return CongratsPage(topic: widget.topic);
               } else {
+
                 return QuestionPage(
                   questionIndex: idx - 1,
                   quiz: quizzes[idx - 1],

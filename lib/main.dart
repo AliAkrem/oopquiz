@@ -1,9 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:provider/provider.dart';
 import 'package:oopquiz/Blocs/win_animation_bloc/win_animation_bloc.dart';
 import 'package:oopquiz/routes.dart';
-import 'package:oopquiz/services/ad_state.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:oopquiz/theme.dart';

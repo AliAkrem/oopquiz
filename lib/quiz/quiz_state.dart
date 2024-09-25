@@ -5,13 +5,19 @@ import 'package:timer_count_down/timer_controller.dart';
 class QuizProvider with ChangeNotifier {
   double _progress = 0;
   String? _selected;
-  int _counter = 1;
+  final int _counter = 1;
 
   int _currentPageIndex = 0;
 
   final CountdownController _publicTimeController = CountdownController();
 
-  late List<bool> quizAnswered;
+  late List<bool> _quizAnswered;
+
+  List<bool> get quizAnswered => _quizAnswered;
+
+  set quizAnswered(List<bool> value) {
+    _quizAnswered = value;
+  }
 
   late int privetTimerControllersLength;
   late List<CountdownController> _privetTimerControllers;
@@ -23,7 +29,6 @@ class QuizProvider with ChangeNotifier {
         List.generate(privetTimerControllersLength, (index) {
       return CountdownController(autoStart: false);
     }, growable: false);
-
 
     quizAnswered = List.generate(privetTimerControllersLength, (index) => false,
         growable: false);
@@ -73,10 +78,9 @@ class QuizProvider with ChangeNotifier {
   }
 
   void goToPage(int index) {
-    if (index - 1 == 0 && getControllerForIndex(0).isCompleted == false ) {
+    if (index - 1 == 0 && getControllerForIndex(0).isCompleted == false) {
       startTimer();
-    }
-    else if (checkIfPreviewsQuizIsAnswered(index - 1)) {
+    } else if (checkIfPreviewsQuizIsAnswered(index - 1)) {
       startCounter(index - 1);
     }
 
