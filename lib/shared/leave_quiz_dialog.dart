@@ -7,7 +7,7 @@ showLeaveAlertDialog(BuildContext context) {
       context: context,
       builder: (BuildContext context) {
         return PopScope(
-          canPop: false,
+          canPop: true,
           child: AlertDialog(
             title: const Text('Are you sure you want to leave the quiz'),
             content:
@@ -21,6 +21,16 @@ showLeaveAlertDialog(BuildContext context) {
                 onPressed: () {
                   // Redirect to the home page
                   Navigator.pushReplacementNamed(context, '/');
+                },
+              ),
+              TextButton(
+                child: const Text(
+                  'Stay',
+                  style: TextStyle(color: Colors.blueAccent),
+                ),
+                onPressed: () {
+                  // Redirect to the home page
+                  Navigator.pop(context);
                 },
               ),
             ],
