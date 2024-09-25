@@ -71,7 +71,7 @@ class QuizProvider with ChangeNotifier {
 
   void nextPage() {
     controller.nextPage(
-      duration: const Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 300),
       curve: Curves.easeOut,
     );
     notifyListeners();
@@ -84,10 +84,8 @@ class QuizProvider with ChangeNotifier {
       startCounter(index - 1);
     }
 
-    controller.animateToPage(
+    controller.jumpToPage(
       index,
-      duration: const Duration(milliseconds: 500),
-      curve: Curves.easeOut,
     );
   }
 
