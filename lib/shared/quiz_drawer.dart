@@ -23,7 +23,7 @@ class QuizDrawer extends StatelessWidget {
           ),
           onTap: () {
             quizState.goToPage(index+1);
-            // Scaffold.of(context).closeDrawer();
+            Scaffold.of(context).closeDrawer();
           },
         );
       },
@@ -33,7 +33,7 @@ class QuizDrawer extends StatelessWidget {
       children: [
         ListTile(
             title: const Text(
-              'leave the test',
+              'Leave the test',
             ),
             leading: const Icon(
               Icons.exit_to_app,
