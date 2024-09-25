@@ -24,9 +24,6 @@ class _CountDownTimerState extends State<QuestionCountDownTimer> {
   Widget build(BuildContext context) {
     var state = Provider.of<QuizProvider>(context);
 
-    print("current page ${widget.idx}");
-
-    print("Controller :  ${state.getControllerForIndex(widget.idx).hashCode}");
 
     return Countdown(
       seconds: widget.duration,

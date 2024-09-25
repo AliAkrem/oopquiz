@@ -32,6 +32,7 @@ class _DrawerNavBarState extends State<DrawerNavBar> {
     final drawerItems = ListView(
       children: [
         drawerHeader,
+        //TODO add here about page and credit 
         ListTile(
             title: const Text(
               'score',

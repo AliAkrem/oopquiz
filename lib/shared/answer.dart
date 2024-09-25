@@ -22,13 +22,7 @@ class _AnswerState extends State<Answer> {
   Widget build(BuildContext context) {
     var state = Provider.of<QuizProvider>(context);
 
-    var correct = state.selected == widget.option &&
-        widget.option == widget.quiz.answers[widget.quiz.correctAnswer];
-
     var alreadyAnswered = state.quizAnswered[widget.questionIndex] && widget.option == widget.quiz.answers[widget.quiz.correctAnswer] ;
-
-    print("index ${widget.questionIndex}  alreadyAnswered  $alreadyAnswered");
-
 
     return Container(
       margin: const EdgeInsets.only(bottom: 10, left: 16, right: 16),
@@ -76,10 +70,10 @@ class _AnswerState extends State<Answer> {
     bool correct = opt == widget.quiz.answers[widget.quiz.correctAnswer];
 
     if (correct) {
-      state.selected = '';
 
+      state.selected = '';
       state.setAnswerTrue(widget.questionIndex);
-    } else {}
+    } 
 
     showModalBottomSheet(
       context: context,
