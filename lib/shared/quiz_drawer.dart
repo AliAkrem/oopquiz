@@ -32,7 +32,7 @@ class QuizDrawer extends StatelessWidget {
 
     final drawerItems = ListView(
       children: [
-        Padding(
+        const Padding(
           padding: EdgeInsets.only( left: 8.0, top: 8.0),
           child: Row(
             children: [

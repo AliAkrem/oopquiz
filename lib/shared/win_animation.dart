@@ -32,11 +32,8 @@ class _WinAnimationProviderState extends State<WinAnimationProvider>
     return Stack(
       children: [
         widget.child,
-        
         widget.show
-            ? Lottie.asset(
-              height: MediaQuery.of(context).size.height,
-              
+            ? Lottie.asset(              
                 repeat: false,
                 'assets/animation/winanimation.json',
                 onLoaded: (composition) {

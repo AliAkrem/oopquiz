@@ -21,7 +21,7 @@ class _DrawerNavBarState extends State<DrawerNavBar> {
       child: ListView(
         children: [
           //TODO add here about page and credit
-          Row(
+          const Row(
             children: [
               Text('options'),
               SizedBox(
@@ -72,7 +72,7 @@ class _DrawerNavBarState extends State<DrawerNavBar> {
                   });
             },
           ),
-          Row(
+          const Row(
             children: [
               Text('More informations'),
               SizedBox(

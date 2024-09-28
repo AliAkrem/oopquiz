@@ -26,9 +26,7 @@ dependencies:
   flutter_bloc: ^8.1.6
   equatable: ^2.0.5
   lottie: ^3.1.2
-  timer_count_down: ^2.2.2 
   shared_preferences: ^2.3.2
-  uuid: ^4.4.2
   preload_page_view: ^0.2.0
   icons_launcher: ^3.0.0
   url_launcher: ^6.3.0

@@ -2,7 +2,6 @@ export 'package:oopquiz/shared/topicList.dart';
 export 'package:oopquiz/shared/drawerNavBar.dart';
 export "package:oopquiz/shared/bottomNavbar.dart";
 
-export "package:oopquiz/shared/count_down_timer.dart";
 
 export 'package:oopquiz/shared/win_animation.dart';
 

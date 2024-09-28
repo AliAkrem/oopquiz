@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
           builder: (context, state) {
             return WinAnimationProvider(
               show: state is WiningState,
-              child: const Expanded(child: TopicList()),
+              child: const TopicList(),
             );
           },
         ),
