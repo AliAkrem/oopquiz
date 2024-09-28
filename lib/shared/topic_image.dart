@@ -51,15 +51,7 @@ class _DynamicImageSizeState extends State<DynamicImageSize> {
               width: imageWidth,
               height: imageHeight,
             )
-          : const CircularProgressIndicator(), // Show a loader while image size is being calculated
+          : const CircularProgressIndicator(), 
     );
   }
 }
-
-// void main() {
-//   runApp(MaterialApp(
-//     home: Scaffold(
-//       body: DynamicImageSize(imagePath: 'your_image.png'),
-//     ),
-//   ));
-// }

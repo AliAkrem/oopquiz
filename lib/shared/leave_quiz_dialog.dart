@@ -8,23 +8,7 @@ showLeaveAlertDialog(BuildContext context) {
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text('Are you sure you want to leave the quiz'),
-          content:
-              const Text('you still have time to complete this mission.'),
           actions: [
-            TextButton(
-              child: const Text(
-                'Leave',
-                style: TextStyle(color: Colors.red),
-              ),
-              onPressed: () {
-                // Redirect to the home page
-                 Navigator.pushNamedAndRemoveUntil(
-                context,
-                '/',
-                (route) => false,
-              );
-              },
-            ),
             TextButton(
               child: const Text(
                 'Stay',
@@ -33,6 +17,19 @@ showLeaveAlertDialog(BuildContext context) {
               onPressed: () {
                 // Redirect to the home page
                 Navigator.pop(context);
+              },
+            ),
+            TextButton(
+              child: const Text(
+                'Leave',
+                style: TextStyle(color: Colors.red),
+              ),
+              onPressed: () {
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  '/',
+                  (route) => false,
+                );
               },
             ),
           ],

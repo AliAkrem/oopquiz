@@ -1,11 +1,9 @@
-import 'dart:ui';
 
 import 'package:markdown_widget/markdown_widget.dart';
 import 'package:oopquiz/Models/quiz_model.dart';
 import 'package:oopquiz/Models/topic_model.dart';
 import 'package:flutter/material.dart';
 import 'package:oopquiz/shared/answer.dart';
-import 'package:oopquiz/shared/qestion_count_down_timer.dart';
 import 'package:oopquiz/shared/shared.dart';
 
 class QuestionPage extends StatefulWidget {
@@ -27,12 +25,12 @@ class _QuestionPageState extends State<QuestionPage>
   @override
   bool get wantKeepAlive => true; // This ensures the widget is kept alive
 
-  bool isAnswersShowed = false;
-  void showAnswers() {
-    setState(() {
-      isAnswersShowed = true;
-    });
-  }
+  // bool isAnswersShowed = false;
+  // void showAnswers() {
+  //   setState(() {
+  //     isAnswersShowed = true;
+  //   });
+  // }
 
   Widget buildMarkdown(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
@@ -87,38 +85,38 @@ class _QuestionPageState extends State<QuestionPage>
                 }),
                 
               ])),
-              (!isAnswersShowed)
-                    ? Positioned.fill(
-                        child: ClipRect(
-                          child: BackdropFilter(
-                            filter: ImageFilter.blur(
-                                sigmaX: 2.0, sigmaY: 2.0), // Blur effect
-                            child: Container(
-                              color: Colors.black
-                                  .withOpacity(0.3), // Optional color overlay
-                              child: Center(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Text(
-                                      'Answers will be displayed after...',
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 20),
-                                    ),
-                                    // You can add a countdown timer or any other widget here
-                                    QuestionCountDownTimer(
-                                      idx: widget.questionIndex,
-                                      showAnswers: showAnswers,
-                                      duration: 30,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      )
-                    : Container(),
+              // (!isAnswersShowed)
+              //       ? Positioned.fill(
+              //           child: ClipRect(
+              //             child: BackdropFilter(
+              //               filter: ImageFilter.blur(
+              //                   sigmaX: 2.0, sigmaY: 2.0), // Blur effect
+              //               child: Container(
+              //                 color: Colors.black
+              //                     .withOpacity(0.3), // Optional color overlay
+              //                 child: Center(
+              //                   child: Column(
+              //                     mainAxisAlignment: MainAxisAlignment.center,
+              //                     children: [
+              //                       const Text(
+              //                         'Answers will be displayed after...',
+              //                         style: TextStyle(
+              //                             color: Colors.white, fontSize: 20),
+              //                       ),
+              //                       // You can add a countdown timer or any other widget here
+              //                       QuestionCountDownTimer(
+              //                         idx: widget.questionIndex,
+              //                         showAnswers: showAnswers,
+              //                         duration: 30,
+              //                       ),
+              //                     ],
+              //                   ),
+              //                 ),
+              //               ),
+              //             ),
+              //           ),
+              //         )
+              //       : Container(),
 
         ],
       )

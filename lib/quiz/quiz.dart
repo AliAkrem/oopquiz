@@ -26,7 +26,7 @@ class _QuizScreenState extends State<QuizScreen> {
     return ChangeNotifierProvider(
       create: (_) => QuizProvider(
           topic: widget.topic,
-          privetTimerControllersLength: widget.topic.quizzes.length),
+          quizLength: widget.topic.quizzes.length),
       builder: (context, child) {
         var quizState = Provider.of<QuizProvider>(context);
         var quizzes = widget.topic.quizzes;
@@ -44,9 +44,10 @@ class _QuizScreenState extends State<QuizScreen> {
                       child: AnimatedProgressbar(value: quizState.progress)),
                   const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 8.0),
-                      child: CountDownTimer(
-                        duration: 420,
-                      ))
+                      // child: CountDownTimer(
+                      //   duration: 420,
+                      // )
+                      )
                 ],
               ),
             ),

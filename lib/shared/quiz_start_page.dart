@@ -28,7 +28,7 @@ class StartPage extends StatelessWidget {
             children: <Widget>[
               ElevatedButton.icon(
                 onPressed: () {
-                  state.startTimer();
+                  // state.startTimer();
                   state.nextPage();
                 },
                 label: const Text('Start'),

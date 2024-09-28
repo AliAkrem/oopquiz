@@ -6,15 +6,6 @@ import 'package:get/get.dart';
 import 'package:oopquiz/theme.dart';
 
 void main() {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // final initFuture = MobileAds.instance.initialize();
-
-  // final adState = AdState(initFuture);
-
-  // runApp(Provider.value(
-  //   value: adState,
-  //   builder: (context, child) => const MyApp(),
-  // ));
 
   runApp(const MyApp());
 }
@@ -37,7 +28,7 @@ class _MyAppState extends State<MyApp> {
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Quiz App',
+        title: 'Java OOP Quiz App',
         theme: appTheme,
         routes: appRoutes,
       ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:oopquiz/quiz/quiz_state.dart';
+import 'package:timer_count_down/timer_controller.dart';
 import 'package:timer_count_down/timer_count_down.dart';
 
 class QuestionCountDownTimer extends StatefulWidget {
@@ -27,7 +28,9 @@ class _CountDownTimerState extends State<QuestionCountDownTimer> {
 
     return Countdown(
       seconds: widget.duration,
-      controller: state.getControllerForIndex(widget.idx),
+      controller:  CountdownController(
+        autoStart: true,
+      ),
       onFinished: () {
         widget.showAnswers();
       },

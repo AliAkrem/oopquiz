@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:oopquiz/quiz/quiz_state.dart';
 import 'package:oopquiz/shared/time_up_dialog.dart';
+import 'package:timer_count_down/timer_controller.dart';
 import 'package:timer_count_down/timer_count_down.dart';
 
 class CountDownTimer extends StatefulWidget {
@@ -22,7 +23,9 @@ class _CountDownTimerState extends State<CountDownTimer> {
 
     return Countdown(
       seconds: widget.duration,
-      controller: state.publicTimeController,
+      controller: CountdownController(
+        autoStart: true,
+      ),
 
       onFinished: () {
         showTimeUpAlertDialog(context);

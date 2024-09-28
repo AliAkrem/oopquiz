@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:oopquiz/Blocs/win_animation_bloc/win_animation_bloc.dart';
 import 'package:oopquiz/shared/shared.dart';
 import 'package:flutter/material.dart';
@@ -12,24 +11,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  BannerAd? banner;
-
-  // @override
-  // void didChangeDependencies() {
-  //   super.didChangeDependencies();
-  //   final adState = Provider.of<AdState>(context);
-
-  //   adState.initialization.then((status) {
-  //     setState(() {
-  //       banner = BannerAd(
-  //         size: AdSize.banner,
-  //         adUnitId: adState.bannerAdUnitId,
-  //         request: const AdRequest(),
-  //         listener: adState.adListener,
-  //       )..load();
-  //     });
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -43,17 +24,7 @@ class _HomePageState extends State<HomePage> {
           builder: (context, state) {
             return WinAnimationProvider(
               show: state is WiningState,
-              child: const Column(
-                children: [
-                  // (banner != null)
-                  //     ? SizedBox(
-                  //         height: 50,
-                  //         child: AdWidget(ad: banner!),
-                  //       )
-                  //     : Container(),
-                  Expanded(child: TopicList())
-                ],
-              ),
+              child: const Expanded(child: TopicList()),
             );
           },
         ),

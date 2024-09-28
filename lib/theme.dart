@@ -9,8 +9,9 @@ var appTheme = ThemeData(
     
     useMaterial3: true,
     appBarTheme: const AppBarTheme(
+      
       color: charcoalColor,
-        elevation: 1, titleTextStyle: TextStyle(fontSize: 25)),
+        elevation: 1, titleTextStyle: TextStyle(fontSize: 20)),
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
       backgroundColor: Colors.blue,

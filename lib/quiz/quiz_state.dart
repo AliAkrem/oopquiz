@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:oopquiz/Models/topic_model.dart';
 import 'package:preload_page_view/preload_page_view.dart';
-import 'package:timer_count_down/timer_controller.dart';
 import 'package:oopquiz/Models/quiz_model.dart';
 
 class QuizProvider with ChangeNotifier {
@@ -10,27 +9,28 @@ class QuizProvider with ChangeNotifier {
   int currentPageIndex = 0;
   final Topic topic;
 
-  //? public TimerController
-  final CountdownController _publicTimeController = CountdownController();
+  // //? public TimerController
+  // final CountdownController _publicTimeController = CountdownController();
 
   //? state of answered quizzes
   late List<bool> quizAnswered;
 
   //? list of observer TimeController waiting to start
-  late int privetTimerControllersLength;
-  late List<CountdownController> _privetTimerControllers;
+  late int quizLength;
+  // late List<CountdownController> _privetTimerControllers;
 
   final PreloadPageController controller = PreloadPageController();
 
   QuizProvider(
-      {required this.privetTimerControllersLength, required this.topic}) {
-    //? initialize list of observer
-    _privetTimerControllers =
-        List.generate(privetTimerControllersLength, (index) {
-      return CountdownController(autoStart: false);
-    }, growable: false);
 
-    quizAnswered = List.generate(privetTimerControllersLength, (index) => false,
+      {required this.quizLength, required this.topic}) {
+    // //? initialize list of observer
+    // _privetTimerControllers =
+    //     List.generate(quizLength, (index) {
+    //   return CountdownController(autoStart: false);
+    // }, growable: false);
+
+    quizAnswered = List.generate(quizLength, (index) => false,
         growable: false);
 
 
@@ -42,9 +42,9 @@ class QuizProvider with ChangeNotifier {
 
   bool get isWin => _progress == 1.0;
 
-  CountdownController get publicTimeController => _publicTimeController;
-  List<CountdownController> get privetTimerControllers =>
-      _privetTimerControllers;
+  // CountdownController get publicTimeController => _publicTimeController;
+  // List<CountdownController> get privetTimerControllers =>
+  //     _privetTimerControllers;
 
   set progress(double newValue) {
     _progress = newValue;
@@ -56,9 +56,9 @@ class QuizProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  CountdownController getControllerForIndex(int index) {
-    return privetTimerControllers[index];
-  }
+  // CountdownController getControllerForIndex(int index) {
+  //   return privetTimerControllers[index];
+  // }
 
   void nextPage() {
     controller.nextPage(
@@ -72,38 +72,38 @@ class QuizProvider with ChangeNotifier {
   //? handle jump between quizzes
   void goToPage(int index) {
     //? check if user jump to first quiz to start test
-    if (index - 1 == 0 && getControllerForIndex(0).isCompleted == false) {
-      startTimer();
-    } else if (checkIfPreviewsQuizIsAnswered(index - 1)) {
-      startCounter(index - 1);
-    }
+    // if (index - 1 == 0 && getControllerForIndex(0).isCompleted == false) {
+    //   // startTimer();
+    // } else if (checkIfPreviewsQuizIsAnswered(index - 1)) {
+    //   startCounter(index - 1);
+    // }
 
     controller.jumpToPage(
       index,
     );
   }
 
-  void startTimer() {
-    _publicTimeController.start();
-    privetTimerControllers[0].start();
-    notifyListeners();
-  }
+  // void startTimer() {
+  //   _publicTimeController.start();
+  //   privetTimerControllers[0].start();
+  //   notifyListeners();
+  // }
 
-  void startNextCounter(int index) {
-    //? index here is for the current page
-    if (checkIfPreviewsQuizIsAnswered(index + 1)) {
-      startCounter(index + 1);
-      notifyListeners();
-    }
-  }
+  // void startNextCounter(int index) {
+  //   //? index here is for the current page
+  //   if (checkIfPreviewsQuizIsAnswered(index + 1)) {
+  //     startCounter(index + 1);
+  //     notifyListeners();
+  //   }
+  // }
 
-  void startCounter(int index) {
-    getControllerForIndex(index).start();
-    notifyListeners();
-  }
+  // void startCounter(int index) {
+  //   getControllerForIndex(index).start();
+  //   notifyListeners();
+  // }
 
   bool checkIfPreviewsQuizIsAnswered(int index) {
-    return index < privetTimerControllersLength &&
+    return index < quizLength &&
         index > 0 &&
         quizAnswered[index - 1];
   }
@@ -113,7 +113,6 @@ class QuizProvider with ChangeNotifier {
     QuizStoreManager.saveQuizStatus(quizId, true);
   }
 
-  void saveProgress() {}
 
   @override
   void dispose() {

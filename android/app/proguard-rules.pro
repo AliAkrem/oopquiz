@@ -1,0 +1,2 @@
+-keep class io.flutter.plugins.urllauncher.** { *; }
+-keep class io.flutter.plugins.** { *; }

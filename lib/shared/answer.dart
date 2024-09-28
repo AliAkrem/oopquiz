@@ -104,7 +104,6 @@ class _AnswerState extends State<Answer> {
                 onPressed: () {
                   if (correct) {
                     state.nextPage();
-                    state.startNextCounter(widget.questionIndex);
                   }
                   Navigator.pop(context);
                 },
