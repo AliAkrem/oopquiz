@@ -1,10 +1,10 @@
-
 import 'package:markdown_widget/markdown_widget.dart';
 import 'package:oopquiz/Models/quiz_model.dart';
 import 'package:oopquiz/Models/topic_model.dart';
 import 'package:flutter/material.dart';
 import 'package:oopquiz/shared/answer.dart';
 import 'package:oopquiz/shared/shared.dart';
+import 'package:oopquiz/utils/build_markdown.dart';
 
 class QuestionPage extends StatefulWidget {
   final int questionIndex;
@@ -32,59 +32,39 @@ class _QuestionPageState extends State<QuestionPage>
   //   });
   // }
 
-  Widget buildMarkdown(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final config =
-        isDark ? MarkdownConfig.darkConfig : MarkdownConfig.defaultConfig;
-
-    codeWrapper(child, text, language) => CodeWrapperWidget(
-          child,
-          text,
-          language,
-        );
-
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: MarkdownWidget(
-          data: widget.quiz.questionContent,
-          config: config.copy(configs: [
-            isDark
-                ? PreConfig.darkConfig.copy(
-                    wrapper: codeWrapper,
-                  )
-                : const PreConfig().copy(wrapper: codeWrapper)
-          ])),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     super.build(context);
 
-    return Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-      Expanded(
-        flex: 2,
-        child: Container(
-            height: MediaQuery.of(context).size.height * 0.6,
-            alignment: Alignment.center,
-            child: buildMarkdown(context)),
-      ),
-      Stack(
-        children: [
-          Container(
-              height: MediaQuery.of(context).size.height * 0.4,
-              padding: const EdgeInsets.only(bottom: 10),
-              child:
-                  Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-                ...widget.quiz.answers.map<Widget>((opt) {
-                  return Answer(
-                    questionIndex: widget.questionIndex,
-                    option: opt,
-                    quiz: widget.quiz,
-                  );
-                }),
-                
-              ])),
+    return SafeArea(
+      child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+        Expanded(
+          flex: 1,
+          child: Container(
+              height: MediaQuery.of(context).size.height * 0.6,
+              alignment: Alignment.center,
+              child: buildMarkdown(context, widget.quiz.questionContent)),
+        ),
+        Expanded(
+          flex: 1,
+          child: Stack(
+            children: [
+              Container(
+                  height: MediaQuery.of(context).size.height * 0.4,
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        ...widget.quiz.answers.map<Widget>((opt) {
+                          return Expanded(
+                            child: Answer(
+                              questionIndex: widget.questionIndex,
+                              option: opt,
+                              quiz: widget.quiz,
+                            ),
+                          );
+                        }),
+                      ])),
               // (!isAnswersShowed)
               //       ? Positioned.fill(
               //           child: ClipRect(
@@ -117,9 +97,37 @@ class _QuestionPageState extends State<QuestionPage>
               //           ),
               //         )
               //       : Container(),
+            ],
+          ),
+        )
+      ]),
+    );
+  }
+}
 
-        ],
-      )
-    ]);
+class ExamplePage extends StatefulWidget {
+  final Quiz quiz;
+  final Topic topic;
+  const ExamplePage({super.key, required this.quiz, required this.topic});
+
+  @override
+  State<ExamplePage> createState() => _ExamplePageState();
+}
+
+class _ExamplePageState extends State<ExamplePage> {
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+        Expanded(
+          flex: 1,
+          child: Container(
+              height: MediaQuery.of(context).size.height * 0.6,
+              alignment: Alignment.center,
+              child: buildMarkdown(context, widget.quiz.questionContent)),
+        ),
+        // ignore: prefer_const_constructors
+      ]),
+    );
   }
 }

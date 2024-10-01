@@ -21,6 +21,11 @@ class _TopicListState extends State<TopicList> {
       widgets.add(TopicItem(topic: topic));
     }
 
-    return GridView.count(crossAxisCount: (1),childAspectRatio: 1.4,  children: widgets);
+    return GridView.count(
+        crossAxisCount: (1),
+        childAspectRatio: 1.4,
+        children: [
+          ...widgets,
+        ]);
   }
 }

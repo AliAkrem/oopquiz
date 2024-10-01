@@ -28,9 +28,11 @@ class _PreWrapperState extends State<CodeWrapperWidget> {
     _switchWidget = Icon(Icons.copy_rounded, key: UniqueKey());
 
     controller = CodeController(
-        text: widget.text, // Initial code
+        text: formatJavaCode(widget.text) , // Initial code
         language: java,
-        readOnly: true);
+        readOnly: true
+        
+        );
   }
 
   double fontSize = 16.0;
@@ -42,11 +44,14 @@ class _PreWrapperState extends State<CodeWrapperWidget> {
           styles: oceanTheme,
         ),
         child: SingleChildScrollView(
+
           child: CodeField(
             padding: const EdgeInsets.all(0),
             readOnly: true,
             textStyle: TextStyle(fontSize: fontSize),
             controller: controller,
+
+
           ),
         ),
       ),
@@ -110,4 +115,39 @@ class _PreWrapperState extends State<CodeWrapperWidget> {
   void refresh() {
     if (mounted) setState(() {});
   }
+
+
+  String formatJavaCode(String code) {
+  // Normalize line endings
+  code = code.replaceAll('\r\n', '\n');
+
+  // Split code into lines
+  List<String> lines = code.split('\n');
+
+  // Prepare for formatted code
+  List<String> formattedLines = [];
+  int indentLevel = 0;
+  const String indent = '  '; // Two spaces for indentation
+
+  for (String line in lines) {
+    line = line.trim(); // Remove leading/trailing whitespaces
+
+    // Check if the line closes a block (e.g., a closing brace)
+    if (line.startsWith('}')) {
+      indentLevel--;
+    }
+
+    // Add the indented line to the formatted lines
+    formattedLines.add('${indent * indentLevel}$line');
+
+    // Check if the line opens a new block (e.g., an opening brace)
+    if (line.endsWith('{')) {
+      indentLevel++;
+    }
+  }
+
+  // Join the formatted lines into a single string
+  return formattedLines.join('\n');
+}
+
 }

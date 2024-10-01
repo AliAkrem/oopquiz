@@ -20,8 +20,12 @@ class QuizDrawer extends StatelessWidget {
               ? Colors.blueAccent
               : null,
           title: Text(
-            '${index + 1}. ${quiz.quizTag}', // Adding index to the quiz tag
+             quiz.quizTag, // Adding index to the quiz tag
           ),
+          trailing: quizState.quizAnswered[index]  ?  const Icon(
+            Icons.check_circle_outline,
+            color: Colors.green,
+          ) : null,
           onTap: () {
             quizState.goToPage(index + 1);
             Scaffold.of(context).closeDrawer();
@@ -33,7 +37,7 @@ class QuizDrawer extends StatelessWidget {
     final drawerItems = ListView(
       children: [
         const Padding(
-          padding: EdgeInsets.only( left: 8.0, top: 8.0),
+          padding: EdgeInsets.only(left: 8.0, top: 8.0),
           child: Row(
             children: [
               Text('Actions'),
@@ -50,7 +54,7 @@ class QuizDrawer extends StatelessWidget {
         ),
         ListTile(
             title: const Text(
-              'Leave the test',
+              'Leave',
             ),
             leading: const Icon(
               Icons.exit_to_app,

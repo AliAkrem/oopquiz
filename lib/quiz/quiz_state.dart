@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:oopquiz/Models/topic_model.dart';
-import 'package:preload_page_view/preload_page_view.dart';
 import 'package:oopquiz/Models/quiz_model.dart';
 
 class QuizProvider with ChangeNotifier {
@@ -19,7 +18,7 @@ class QuizProvider with ChangeNotifier {
   late int quizLength;
   // late List<CountdownController> _privetTimerControllers;
 
-  final PreloadPageController controller = PreloadPageController();
+  final PageController controller = PageController();
 
   QuizProvider(
 

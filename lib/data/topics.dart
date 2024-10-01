@@ -1,5 +1,9 @@
 import 'package:oopquiz/Models/quiz_model.dart';
 import 'package:oopquiz/Models/topic_model.dart';
+import 'package:oopquiz/data/abstraction_seed.dart';
+import 'package:oopquiz/data/encapsulation_seed.dart';
+import 'package:oopquiz/data/examples.dart';
+import 'package:oopquiz/data/inheritance_polymorphism_seed.dart';
 import 'package:oopquiz/data/modularity_seed.dart';
 
 List<Topic> topics = [
@@ -10,7 +14,6 @@ List<Topic> topics = [
         'Modularity is the practice of dividing a program into separate, independent modules that can be developed and tested individually.',
     "image_path": 'cube.png',
     "quizzes": modularity.map((e) => Quiz.fromJson(e)).toList(),
-    
   },
   {
     "topic_id": 2,
@@ -18,7 +21,7 @@ List<Topic> topics = [
     "description":
         'Inheritance allows one class to inherit properties and behaviors (methods) from another class, Where Polymorphism allows objects of different classes to be treated as objects of a common parent class. A method can behave differently based on the object it is acting on.',
     "image_path": 'h_and_p.png',
-    // "quizzes": List<Quiz>.
+    "quizzes": inheritanceAndPolymorphism.map((e) => Quiz.fromJson(e)).toList(),
   },
   {
     "topic_id": 3,
@@ -26,7 +29,7 @@ List<Topic> topics = [
     "description":
         'Abstraction is the concept of hiding the complex implementation details and showing only the necessary features of an object.',
     "image_path": 'layers.png',
-    // "quizzes": List<Quiz>.empty
+    "quizzes": abstraction.map((e) => Quiz.fromJson(e)).toList(),
   },
   {
     "topic_id": 4,
@@ -34,15 +37,15 @@ List<Topic> topics = [
     "description":
         'Encapsulation is the bundling of data (attributes) and methods (functions) that operate on the data into a single unit or class, with controlled access.',
     "image_path": 'capsule.png',
-    // "quizzes": List<Quiz>.empty
+    "quizzes": encapsulation.map((e) => Quiz.fromJson(e)).toList(),
   },
   {
     "topic_id": 5,
     "name": 'More Projects',
     "description":
-        'Advanced exercises combining several OOP concepts into larger, more complex scenarios like graphs, chemistry labs, and fantasy-based themes like "The Lord of the Rings" and "Star Wars."',
+        'Advanced exercises combining several OOP concepts into larger, more complex scenarios."',
     "image_path": 'app.png',
-    // "quizzes": List<Quiz>.empty
+    "quizzes": examples.map((e) => Quiz.fromJson(e)).toList(),
   }
 ]
     .map(

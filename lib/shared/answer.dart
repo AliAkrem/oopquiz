@@ -103,9 +103,14 @@ class _AnswerState extends State<Answer> {
                 ),
                 onPressed: () {
                   if (correct) {
-                    state.nextPage();
+                    if (state.quizAnswered
+                        .every((element) => element == true)) {
+                      Navigator.pop(context);
+                    } else {
+                      state.nextPage();
+                      Navigator.pop(context);
+                    }
                   }
-                  Navigator.pop(context);
                 },
               ),
             ],

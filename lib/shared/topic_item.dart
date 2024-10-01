@@ -93,17 +93,19 @@ class _TopicItemState extends State<TopicItem> {
                     const SizedBox(
                       height: 20,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 14),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                              child: AnimatedProgressbar(
-                                  value: widget.topic.progress)),
-                        ],
-                      ),
-                    )
+                    widget.topic.topicId != 5
+                        ? Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 14),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Expanded(
+                                    child: AnimatedProgressbar(
+                                        value: widget.topic.progress)),
+                              ],
+                            ),
+                          )
+                        : Container()
                   ],
                 ),
               ),
