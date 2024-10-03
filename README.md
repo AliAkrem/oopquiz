@@ -6,10 +6,11 @@ Java OOP Quiz App is an interactive mobile app designed to help users test and i
 ## Screenshots
 
 
-<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1.jpg" width=49% /><img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2.jpg" width=49% />
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1.jpg" width=49% /> 
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2.jpg"  width=49% />
 
 ## Contributing
 Feel free to fork the project, make improvements, and submit a pull request!
 
 ## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+ GPL-3.0
