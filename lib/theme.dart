@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:oopquiz/utils/constants.dart';
 
 var appTheme = ThemeData(
-    fontFamily: GoogleFonts.nunito().fontFamily,
+    fontFamily: 'Nunito',
     brightness: Brightness.dark,
     primaryColor: charcoalColor,
-    
     useMaterial3: true,
     appBarTheme: const AppBarTheme(
-      
       color: charcoalColor,
         elevation: 1, titleTextStyle: TextStyle(fontSize: 20)),
     elevatedButtonTheme: ElevatedButtonThemeData(

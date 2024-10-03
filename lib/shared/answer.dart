@@ -105,12 +105,11 @@ class _AnswerState extends State<Answer> {
                   if (correct) {
                     if (state.quizAnswered
                         .every((element) => element == true)) {
-                      Navigator.pop(context);
                     } else {
                       state.nextPage();
-                      Navigator.pop(context);
                     }
                   }
+                  Navigator.pop(context);
                 },
               ),
             ],

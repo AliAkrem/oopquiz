@@ -13,7 +13,6 @@ dependencies:
   get: ^4.6.6
   provider: ^6.1.2
   flutter_dotenv: ^5.1.0
-  google_fonts: ^6.2.1
   flutter_animate: ^4.5.0
   font_awesome_flutter: ^10.7.0
   flutter_code_editor: ^0.3.2
@@ -46,6 +45,14 @@ flutter:
   - assets/animation/winanimation.json
   - assets/topics/
   - assets/logo.png
+  
+  fonts:
+  - family: Nunito
+    fonts:
+      - asset: assets/fonts/Nunito-Regular.ttf
+      - asset: assets/fonts/Nunito-Bold.ttf
+        weight: 700
+
 
 icons_launcher:
   image_path: "assets/logo.png"
@@ -54,3 +61,5 @@ icons_launcher:
       enable: true
     ios:
       enable: false
+
+  
