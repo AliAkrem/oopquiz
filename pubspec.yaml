@@ -12,7 +12,6 @@ dependencies:
     sdk: flutter
   get: ^4.6.6
   provider: ^6.1.2
-  flutter_dotenv: ^5.1.0
   flutter_animate: ^4.5.0
   font_awesome_flutter: ^10.7.0
   flutter_code_editor: ^0.3.2
@@ -28,6 +27,7 @@ dependencies:
   preload_page_view: ^0.2.0
   icons_launcher: ^3.0.0
   url_launcher: ^6.3.0
+
 
 dev_dependencies:
   flutter_test:
@@ -52,14 +52,3 @@ flutter:
       - asset: assets/fonts/Nunito-Regular.ttf
       - asset: assets/fonts/Nunito-Bold.ttf
         weight: 700
-
-
-icons_launcher:
-  image_path: "assets/logo.png"
-  platforms:
-    android:
-      enable: true
-    ios:
-      enable: false
-
-  
