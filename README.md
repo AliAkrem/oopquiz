@@ -1,16 +1,15 @@
-# oopquiz
+# Java OOP Quiz
 
-A new Flutter project.
+Java OOP Quiz App is an interactive mobile app designed to help users test and improve their knowledge of Object-Oriented Programming (OOP) concepts in Java. It features a variety of quizzes that cover essential topics like classes, inheritance, polymorphism, and interfaces, with immediate feedback to enhance learning. The app includes a smooth user interface and progress tracking.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Screenshots
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1.jpg" width=49% /><img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2.jpg" width=49% />
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Contributing
+Feel free to fork the project, make improvements, and submit a pull request!
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.

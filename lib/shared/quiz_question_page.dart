@@ -34,72 +34,70 @@ class _QuestionPageState extends State<QuestionPage>
   Widget build(BuildContext context) {
     super.build(context);
 
-    return SafeArea(
-      child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-        Expanded(
-          flex: 1,
-          child: Container(
-              height: MediaQuery.of(context).size.height * 0.6,
-              alignment: Alignment.center,
-              child: buildMarkdown(context, widget.quiz.questionContent)),
+    return Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+      Expanded(
+        flex: 1,
+        child: Container(
+            height: MediaQuery.of(context).size.height * 0.6,
+            alignment: Alignment.center,
+            child: buildMarkdown(context, widget.quiz.questionContent)),
+      ),
+      Expanded(
+        flex: 1,
+        child: Stack(
+          children: [
+            Container(
+                height: MediaQuery.of(context).size.height * 0.4,
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      ...widget.quiz.answers.map<Widget>((opt) {
+                        return Expanded(
+                          child: Answer(
+                            questionIndex: widget.questionIndex,
+                            option: opt,
+                            quiz: widget.quiz,
+                          ),
+                        );
+                      }),
+                    ])),
+            // (!isAnswersShowed)
+            //       ? Positioned.fill(
+            //           child: ClipRect(
+            //             child: BackdropFilter(
+            //               filter: ImageFilter.blur(
+            //                   sigmaX: 2.0, sigmaY: 2.0), // Blur effect
+            //               child: Container(
+            //                 color: Colors.black
+            //                     .withOpacity(0.3), // Optional color overlay
+            //                 child: Center(
+            //                   child: Column(
+            //                     mainAxisAlignment: MainAxisAlignment.center,
+            //                     children: [
+            //                       const Text(
+            //                         'Answers will be displayed after...',
+            //                         style: TextStyle(
+            //                             color: Colors.white, fontSize: 20),
+            //                       ),
+            //                       // You can add a countdown timer or any other widget here
+            //                       QuestionCountDownTimer(
+            //                         idx: widget.questionIndex,
+            //                         showAnswers: showAnswers,
+            //                         duration: 30,
+            //                       ),
+            //                     ],
+            //                   ),
+            //                 ),
+            //               ),
+            //             ),
+            //           ),
+            //         )
+            //       : Container(),
+          ],
         ),
-        Expanded(
-          flex: 1,
-          child: Stack(
-            children: [
-              Container(
-                  height: MediaQuery.of(context).size.height * 0.4,
-                  padding: const EdgeInsets.only(bottom: 10),
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        ...widget.quiz.answers.map<Widget>((opt) {
-                          return Expanded(
-                            child: Answer(
-                              questionIndex: widget.questionIndex,
-                              option: opt,
-                              quiz: widget.quiz,
-                            ),
-                          );
-                        }),
-                      ])),
-              // (!isAnswersShowed)
-              //       ? Positioned.fill(
-              //           child: ClipRect(
-              //             child: BackdropFilter(
-              //               filter: ImageFilter.blur(
-              //                   sigmaX: 2.0, sigmaY: 2.0), // Blur effect
-              //               child: Container(
-              //                 color: Colors.black
-              //                     .withOpacity(0.3), // Optional color overlay
-              //                 child: Center(
-              //                   child: Column(
-              //                     mainAxisAlignment: MainAxisAlignment.center,
-              //                     children: [
-              //                       const Text(
-              //                         'Answers will be displayed after...',
-              //                         style: TextStyle(
-              //                             color: Colors.white, fontSize: 20),
-              //                       ),
-              //                       // You can add a countdown timer or any other widget here
-              //                       QuestionCountDownTimer(
-              //                         idx: widget.questionIndex,
-              //                         showAnswers: showAnswers,
-              //                         duration: 30,
-              //                       ),
-              //                     ],
-              //                   ),
-              //                 ),
-              //               ),
-              //             ),
-              //           ),
-              //         )
-              //       : Container(),
-            ],
-          ),
-        )
-      ]),
-    );
+      )
+    ]);
   }
 }
 

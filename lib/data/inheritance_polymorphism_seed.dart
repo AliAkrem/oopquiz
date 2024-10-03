@@ -64,8 +64,8 @@ final inheritanceAndPolymorphism = [
     "answers": [
       "The program compiles and displays: 2, 1, 3",
       "Compilation error: Incompatible types: Toto cannot be cast to Titi.",
-      "The program compiles and displays: 1, 1, 3"
-          "Compilation error: Toto is not a kind of Tweety, assignment impossible", // correct answer
+      "The program compiles and displays: 1, 1, 3",
+      "Compilation error: Toto is not a kind of Tweety, assignment impossible", // correct answer
     ],
     "details":
         "the program doesn't compile (Toto is not a kind of Tweety, assignment impossible) ",
