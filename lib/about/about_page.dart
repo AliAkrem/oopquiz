@@ -61,7 +61,7 @@ class AboutPage extends StatelessWidget {
                 height: 100,
                 width: MediaQuery.of(context).size.width,
                 child: GridView.count(
-                  crossAxisCount: 4,
+                  crossAxisCount: 3,
                   shrinkWrap: true,
                   mainAxisSpacing: 0,
                   crossAxisSpacing: 0,
