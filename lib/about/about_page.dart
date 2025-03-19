@@ -70,10 +70,6 @@ class AboutPage extends StatelessWidget {
                     _buildActionButton(Icons.bug_report, "Report Bug", () {
                       _launchURL('https://github.com/AliAkrem/oopquiz/issues');
                     }),
-                    _buildActionButton(Icons.attach_money, "Donate", () {
-                      // Handle Donate action
-                      _launchURL('https://buymeacoffee.com/aliakrem');
-                    }),
                     _buildActionButton(Icons.code, "Source Code", () {
                       // Handle Source Code action
                       _launchURL('https://github.com/AliAkrem/oopquiz');
