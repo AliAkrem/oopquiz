@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:oopquiz/blocs/win_animation_bloc/win_animation_bloc.dart';
+import 'package:oopquiz/Blocs/win_animation_bloc/win_animation_bloc.dart';
 import 'package:oopquiz/shared/shared.dart';
 import 'package:flutter/material.dart';
 
