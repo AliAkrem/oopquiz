@@ -1,4 +1,4 @@
-import 'package:oopquiz/Models/topic_model.dart';
+import 'package:oopquiz/models/topic_model.dart';
 import 'package:oopquiz/quiz/quiz.dart';
 import 'package:flutter/material.dart';
 import 'package:oopquiz/utils/constants.dart';

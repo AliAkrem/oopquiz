@@ -1,6 +1,6 @@
-import 'package:oopquiz/Models/quiz_model.dart';
+import 'package:oopquiz/models/quiz_model.dart';
 import 'package:oopquiz/shared/progress_bar.dart';
-import 'package:oopquiz/Models/topic_model.dart';
+import 'package:oopquiz/models/topic_model.dart';
 import 'package:flutter/material.dart';
 import 'package:oopquiz/shared/topic_screen.dart';
 import 'package:oopquiz/utils/constants.dart';

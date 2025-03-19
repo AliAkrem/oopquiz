@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:oopquiz/Models/quiz_model.dart';
+import 'package:oopquiz/models/quiz_model.dart';
 import 'package:oopquiz/quiz/quiz_state.dart';
 import 'package:oopquiz/shared/leave_quiz_dialog.dart';
 

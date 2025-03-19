@@ -1,5 +1,5 @@
-import 'package:oopquiz/Models/quiz_model.dart';
-import 'package:oopquiz/Models/topic_model.dart';
+import 'package:oopquiz/models/quiz_model.dart';
+import 'package:oopquiz/models/topic_model.dart';
 import 'package:oopquiz/data/abstraction_seed.dart';
 import 'package:oopquiz/data/encapsulation_seed.dart';
 import 'package:oopquiz/data/examples.dart';

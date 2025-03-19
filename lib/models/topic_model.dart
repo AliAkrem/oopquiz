@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:oopquiz/Models/quiz_model.dart';
+import 'package:oopquiz/models/quiz_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Topic topicFromJson(String str) => Topic.fromJson(json.decode(str));

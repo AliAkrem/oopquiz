@@ -1,5 +1,5 @@
-import 'package:oopquiz/Models/quiz_model.dart';
-import 'package:oopquiz/Models/topic_model.dart';
+import 'package:oopquiz/models/quiz_model.dart';
+import 'package:oopquiz/models/topic_model.dart';
 import 'package:flutter/material.dart';
 import 'package:oopquiz/shared/answer.dart';
 import 'package:oopquiz/utils/build_markdown.dart';

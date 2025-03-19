@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:oopquiz/Blocs/win_animation_bloc/win_animation_bloc.dart';
-import 'package:oopquiz/Models/topic_model.dart';
+import 'package:oopquiz/blocs/win_animation_bloc/win_animation_bloc.dart';
+import 'package:oopquiz/models/topic_model.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
